@@ -24,7 +24,7 @@ function App() {
     <center className="content-div">
       <Header />
       <Todoitems onNewItem={onNewItem} />
-      {todoItems == "" && <ErrorMessage />}
+      {todoItems.length === 0 && <ErrorMessage />}
       <ShowTodoItem todoItems={todoItems} handleDeleteBtn={handleDeleteBtn} />
     </center>
   );
