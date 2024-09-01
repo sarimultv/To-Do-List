@@ -11,3 +11,6 @@ Note: In JavaScript, Array does not have any type, a single array can contain St
 It spreads the current array.
 Creating an array using an existing array and adding more elements to it sequentially.
 It is used to maintain immutability when updating arrays or objects.
+
+## React JS
+In real project, react authomatically works in async format 
