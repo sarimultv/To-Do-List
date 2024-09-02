@@ -4,18 +4,19 @@ import Header from "./components/Header";
 import ShowTodoItem from "./components/ShowTodoItem";
 import Todoitems from "./components/Todoitems";
 import ErrorMessage from "./components/ErrorMessage";
+import { TodoitemsContext } from "./store/TodoItemsStore";
 
 function App() {
   let [todoItems, setNewTodoItems] = useState([]);
 
-  const onNewItem = (TodoName, DueDate) => {
-    setNewTodoItems((currVal) => {
-      let newTodo = [...currVal, { todoItem: TodoName, todoDate: DueDate }];
-      return newTodo;
-    });
+  const addNewItem = (TodoName, DueDate) => {
+    setNewTodoItems((currVal) => [
+      ...currVal,
+      { todoItem: TodoName, todoDate: DueDate },
+    ]);
   };
 
-  const handleDeleteBtn = (deletedTodoItem) => {
+  const deleteItem = (deletedTodoItem) => {
     let newTodoItems = todoItems.filter(
       (item) => item.todoItem !== deletedTodoItem
     );
@@ -23,12 +24,20 @@ function App() {
   };
 
   return (
-    <center className="content-div">
-      <Header />
-      <Todoitems onNewItem={onNewItem} />
-      {todoItems.length === 0 && <ErrorMessage />}
-      <ShowTodoItem todoItems={todoItems} handleDeleteBtn={handleDeleteBtn} />
-    </center>
+    <TodoitemsContext.Provider
+      value={{
+        todoItems,
+        addNewItem,
+        deleteItem,
+      }}
+    >
+      <center className="content-div">
+        <Header />
+        <Todoitems />
+        <ErrorMessage />
+        <ShowTodoItem />
+      </center>
+    </TodoitemsContext.Provider>
   );
 }
 
