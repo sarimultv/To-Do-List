@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "todolist",
+=======
+  "name": "calculator",
+>>>>>>> origin/main
   "version": "0.1.0",
   "private": true,
   "dependencies": {
