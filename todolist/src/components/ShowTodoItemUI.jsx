@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./ShowTodoItemUI.module.css";
 import { RiDeleteBin6Fill } from "react-icons/ri";
+import { TodoitemsContext } from "../store/TodoItemsStore";
 
-const ShowTodoItemUI = ({ todoNewName, todoDueDate, handleDeleteBtn }) => {
+const ShowTodoItemUI = ({ todoNewName, todoDueDate }) => {
+  const { deleteItem } = useContext(TodoitemsContext); //object destructuring
+
   let [checked, setChecked] = useState("");
 
   const handleCheckBox = () => {
@@ -29,7 +32,7 @@ const ShowTodoItemUI = ({ todoNewName, todoDueDate, handleDeleteBtn }) => {
       <div className="col-4">
         <button
           className="btn btn-danger"
-          onClick={() => handleDeleteBtn(todoNewName)}
+          onClick={() => deleteItem(todoNewName)}
         >
           <RiDeleteBin6Fill />
         </button>

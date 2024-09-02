@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { TodoitemsContext } from "../store/TodoItemsStore";
 import ShowTodoItemUI from "./ShowTodoItemUI";
 
-const ShowTodoItem = ({ todoItems, handleDeleteBtn }) => {
+const ShowTodoItem = () => {
+  const { todoItems } = useContext(TodoitemsContext); //object destructuring
+  // let todoItems = contextObj.todoItems;
+
   return (
     <>
       {todoItems.map((item) => {
@@ -9,7 +14,6 @@ const ShowTodoItem = ({ todoItems, handleDeleteBtn }) => {
             key={item.todoItem}
             todoNewName={item.todoItem}
             todoDueDate={item.todoDate}
-            handleDeleteBtn={handleDeleteBtn}
           />
         );
       })}
