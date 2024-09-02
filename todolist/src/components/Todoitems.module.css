@@ -1,0 +1,21 @@
+.todoInput {
+  padding: 1rem;
+  border-bottom: 1px solid #00000021;
+  width: 100%;
+}
+
+.todoInput button {
+  width: 20%;
+}
+
+@media (max-width: 600px) {
+  .todoInput button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) {
+  .todoInput button {
+    width: 30%;
+  }
+}
